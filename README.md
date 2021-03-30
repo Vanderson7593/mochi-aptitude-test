@@ -1,10 +1,10 @@
-This is my Mochi Company aptitude test
+This is my Mochi Company aptitude test.
 
 To see the test, use the following link: https://github.com/ilovemochi/Mochi-Test-Front-End-MC
 
 You can access the app hosted in vercel following this link: https://mochi-aptitude-test.vercel.app/
 
-## High leve used Technologies
+## High level used Technologies
 
 Javascript framework <a href="https://nextjs.org/">NextJs - a React framework</a>
 
@@ -30,5 +30,11 @@ npm run dev
 yarn dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the result..
+
+
+
+
+## Contributing
+Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
 
