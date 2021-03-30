@@ -1,65 +1,70 @@
-import Head from 'next/head'
+import React, { useContext } from 'react'
 import styles from '../styles/Home.module.css'
+import Header from '../components/Header/Header';
+import GithubContext from '../context/github/githubContext';
+import { Tabs, BackTop, Typography } from 'antd';
+import isMobile from 'ismobilejs';
+import OrgsList from '../components/OrgsList/OrgsList';
+import ReposList from '../components/ReposList/ReposList';
+
+const { TabPane } = Tabs;
+const { Title } = Typography;
 
 export default function Home() {
+
+  const githubContext = useContext(GithubContext);
+
+  const { repos, orgs, searching } = githubContext
+
+  const Body = () => {
+    return (
+      isMobile(window.navigator).phone ?
+        <div>
+          <Tabs defaultActiveKey="1" centered size={'large'}>
+            <TabPane tab={`USERS-REPOS (${repos.total_count})`} key="1">
+              <ReposList />
+            </TabPane>
+            <TabPane tab={`COMPANIES (${orgs.total_count})`} key="2">
+              <OrgsList />
+            </TabPane>
+          </Tabs>
+        </div>
+        :
+        <div className={styles.tabsWrapper}>
+          <div style={{ width: 310 }}>
+            <Tabs defaultActiveKey="1" size={'large'}>
+              <TabPane tab={`USERS-REPOS (${repos.total_count})`} key="1">
+                <ReposList />
+              </TabPane>
+            </Tabs>
+          </div>
+
+          <div style={{ width: 310 }}>
+            <Tabs defaultActiveKey="1" size={'large'}>
+              <TabPane tab={`COMPANIES (${orgs.total_count})`} key="1">
+                <OrgsList />
+              </TabPane>
+            </Tabs>
+          </div>
+        </div>
+    )
+  }
+
   return (
     <div className={styles.container}>
-      <Head>
-        <title>Create Next App</title>
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-
       <main className={styles.main}>
-        <h1 className={styles.title}>
-          Welcome to <a href="https://nextjs.org">Next.js!</a>
-        </h1>
-
-        <p className={styles.description}>
-          Get started by editing{' '}
-          <code className={styles.code}>pages/index.js</code>
-        </p>
-
-        <div className={styles.grid}>
-          <a href="https://nextjs.org/docs" className={styles.card}>
-            <h3>Documentation &rarr;</h3>
-            <p>Find in-depth information about Next.js features and API.</p>
-          </a>
-
-          <a href="https://nextjs.org/learn" className={styles.card}>
-            <h3>Learn &rarr;</h3>
-            <p>Learn about Next.js in an interactive course with quizzes!</p>
-          </a>
-
-          <a
-            href="https://github.com/vercel/next.js/tree/master/examples"
-            className={styles.card}
-          >
-            <h3>Examples &rarr;</h3>
-            <p>Discover and deploy boilerplate example Next.js projects.</p>
-          </a>
-
-          <a
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className={styles.card}
-          >
-            <h3>Deploy &rarr;</h3>
-            <p>
-              Instantly deploy your Next.js site to a public URL with Vercel.
-            </p>
-          </a>
-        </div>
+        <Header />
+        {searching ?
+          <Body />
+          :
+          <div className={styles.landing}>
+            <Title level={4} style={{ textAlign: 'center' }}>
+              {githubContext.homeText}
+            </Title>
+          </div>
+        }
+        <BackTop />
       </main>
-
-      <footer className={styles.footer}>
-        <a
-          href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Powered by{' '}
-          <img src="/vercel.svg" alt="Vercel Logo" className={styles.logo} />
-        </a>
-      </footer>
-    </div>
+    </div >
   )
 }
