@@ -8,7 +8,8 @@ import {
     INCREMENT_REPO_COUNTER,
     RESET_COUNTERS,
     SET_TEXT,
-    SET_HOME_TEXT
+    SET_HOME_TEXT,
+    SET_TAB_KEY
 } from '../types';
 
 const githubReducer = (state, action) => {
@@ -64,6 +65,11 @@ const githubReducer = (state, action) => {
             return {
                 ...state,
                 text: action.payload
+            };
+        case SET_TAB_KEY:
+            return {
+                ...state,
+                tabKey: action.payload
             };
         case SET_HOME_TEXT:
             return {

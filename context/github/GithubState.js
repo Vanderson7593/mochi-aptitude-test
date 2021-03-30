@@ -16,7 +16,8 @@ import {
     LOAD_MORE_REPO,
     RESET_COUNTERS,
     SET_TEXT,
-    SET_HOME_TEXT
+    SET_HOME_TEXT,
+    SET_TAB_KEY
 } from '../types';
 
 
@@ -36,6 +37,7 @@ const GithubState = ({ children }) => {
         loadingRepos: false,
         loadingOrgs: false,
         searching: false,
+        tabKey: 1,
         homeText: 'Please, enter a login, name or a company you are locking for!'
     };
 
@@ -57,6 +59,7 @@ const GithubState = ({ children }) => {
 
             let auxCounter = state.repoCounter + 4
             incrementRepoCounter();
+            setTabKey(1)
             axios.get(`https://api.github.com/search/repositories?q=${text}%20in:name,description&per_page=${auxCounter}&page=1`)
                 .then(res => doDispatch(res))
                 .catch(() => {
@@ -89,6 +92,7 @@ const GithubState = ({ children }) => {
         if (type === LOAD_MORE_ORG) {
             let auxCounter = state.orgCounter + 4
             incrementOrgCounter()
+            setTabKey(2)
             axios.get(`https://api.github.com/search/users?q=${text}+type:org&per_page=${auxCounter}&page=1`)
                 .then(res => doDispatch(res))
                 .catch(() => {
@@ -147,6 +151,9 @@ const GithubState = ({ children }) => {
     // Set Text
     const setHomeText = text => dispatch({ type: SET_HOME_TEXT, payload: text });
 
+    // Set Tab Key
+    const setTabKey = text => dispatch({ type: SET_TAB_KEY, payload: text });
+
     return (
         <GithubContext.Provider
             value={{
@@ -159,6 +166,7 @@ const GithubState = ({ children }) => {
                 text: state.text,
                 homeText: state.homeText,
                 searching: state.searching,
+                tabKey: state.tabKey,
                 searchRepo,
                 setText,
                 searchOrg,

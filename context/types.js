@@ -12,3 +12,4 @@ export const LOAD_MORE_ORG = 'LOAD_MORE_ORG';
 export const RESET_COUNTERS = 'RESET_COUNTERS';
 export const SET_TEXT = 'SET_TEXT';
 export const SET_HOME_TEXT = 'SET_HOME_TEXT';
+export const SET_TAB_KEY = 'SET_TAB_KEY';

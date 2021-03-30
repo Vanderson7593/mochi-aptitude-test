@@ -14,13 +14,13 @@ export default function Home() {
 
   const githubContext = useContext(GithubContext);
 
-  const { repos, orgs, searching } = githubContext
+  const { repos, orgs, searching, tabKey } = githubContext
 
   const Body = () => {
     return (
       isMobile(window.navigator).phone ?
         <div>
-          <Tabs defaultActiveKey="1" centered size={'large'}>
+          <Tabs defaultActiveKey={`${tabKey}`} centered size={'small'}>
             <TabPane tab={`USERS-REPOS (${repos.total_count})`} key="1">
               <ReposList />
             </TabPane>
@@ -32,7 +32,7 @@ export default function Home() {
         :
         <div className={styles.tabsWrapper}>
           <div style={{ width: 310 }}>
-            <Tabs defaultActiveKey="1" size={'middle'}>
+            <Tabs defaultActiveKey="1" size={'large'}>
               <TabPane tab={`USERS-REPOS (${repos.total_count})`} key="1">
                 <ReposList />
               </TabPane>
@@ -40,7 +40,7 @@ export default function Home() {
           </div>
 
           <div style={{ width: 310 }}>
-            <Tabs defaultActiveKey="1" size={'small'}>
+            <Tabs defaultActiveKey="1" size={'large'}>
               <TabPane tab={`COMPANIES (${orgs.total_count})`} key="1">
                 <OrgsList />
               </TabPane>
