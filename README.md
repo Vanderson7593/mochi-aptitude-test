@@ -6,9 +6,9 @@ You can access the app hosted in vercel following this link: https://mochi-aptit
 
 ## High level used Technologies
 
-Javascript framework <a href="https://nextjs.org/">NextJs - a React framework</a>
+Javascript framework: <a href="https://nextjs.org/">NextJs</a>  - a React framework
 
-UI framework <a href="https://ant.design//">Ant design - a React UI framework</a>
+UI framework: <a href="https://ant.design//">Ant design</a>  - a React UI framework
 
 ## Getting Started
 
