@@ -32,7 +32,7 @@ export default function Home() {
         :
         <div className={styles.tabsWrapper}>
           <div style={{ width: 310 }}>
-            <Tabs defaultActiveKey="1" size={'large'}>
+            <Tabs defaultActiveKey="1" size={'middle'}>
               <TabPane tab={`USERS-REPOS (${repos.total_count})`} key="1">
                 <ReposList />
               </TabPane>
@@ -40,7 +40,7 @@ export default function Home() {
           </div>
 
           <div style={{ width: 310 }}>
-            <Tabs defaultActiveKey="1" size={'large'}>
+            <Tabs defaultActiveKey="1" size={'small'}>
               <TabPane tab={`COMPANIES (${orgs.total_count})`} key="1">
                 <OrgsList />
               </TabPane>
