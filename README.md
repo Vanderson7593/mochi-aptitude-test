@@ -2,6 +2,12 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 
 You can access the app hosted in vercel following this link: https://mochi-aptitude-test.vercel.app/
 
+## High leve used Technologies
+
+Javascript framework <a href="https://nextjs.org/">NextJs - a React framework</a>
+
+UI framework <a href="https://ant.design//">Ant design - a React UI framework</a>
+
 ## Getting Started
 
 First, run the development server:
