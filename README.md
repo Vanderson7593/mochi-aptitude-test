@@ -8,7 +8,7 @@ You can access the app hosted in vercel, following this link: https://mochi-apti
 
 Javascript framework: <a href="https://nextjs.org/">NextJs</a> - a React framework
 
-UI framework: <a href="https://ant.design//">Ant design</a> - a React UI framework
+UI lib: <a href="https://ant.design//">Ant design</a> - a React UI library
 
 ## Getting Started
 
